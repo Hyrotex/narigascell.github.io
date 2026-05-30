@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NarigasCell - Sua Loja de Celulares</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">NarigasCell</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#carrinho" class="carrinho-btn">🛒 Carrinho (<span id="carrinho-count">0</span>)</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Bem-vindo à NarigasCell</h1>
+            <p>Os Melhores Celulares com os Melhores Preços</p>
+            <button class="btn-primary" onclick="document.getElementById('produtos').scrollIntoView({behavior: 'smooth'})">
+                Ver Produtos
+            </button>
+        </div>
+    </section>
+
+    <!-- Seção de Produtos -->
+    <section id="produtos" class="produtos">
+        <div class="container">
+            <h2>Catálogo de Celulares</h2>
+            
+            <!-- Filtros -->
+            <div class="filtros">
+                <label>Marca:
+                    <select id="filtro-marca" onchange="filtrarProdutos()">
+                        <option value="">Todas</option>
+                        <option value="Apple">Apple</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Motorola">Motorola</option>
+                        <option value="Xiaomi">Xiaomi</option>
+                    </select>
+                </label>
+                <label>Preço Máximo:
+                    <input type="range" id="filtro-preco" min="0" max="5000" value="5000" onchange="filtrarProdutos()">
+                    <span id="valor-preco">R$ 5000</span>
+                </label>
+            </div>
+
+            <!-- Grade de Produtos -->
+            <div class="produtos-grid" id="produtos-grid">
+                <!-- Produtos serão carregados por JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section id="contato" class="contato">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <div class="contato-info">
+                <div class="info-item">
+                    <h3>📞 Telefone</h3>
+                    <p>(11) 99999-9999</p>
+                </div>
+                <div class="info-item">
+                    <h3>📧 Email</h3>
+                    <p>contato@narigascell.com.br</p>
+                </div>
+                <div class="info-item">
+                    <h3>📍 Localização</h3>
+                    <p>São Paulo, SP - Brasil</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 NarigasCell. Todos os direitos reservados.</p>
+            <p>Desenvolvido com ❤️ para você</p>
+        </div>
+    </footer>
+
+    <!-- Modal do Carrinho -->
+    <div id="carrinho-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharCarrinho()">&times;</span>
+            <h2>🛒 Seu Carrinho</h2>
+            <div id="carrinho-items"></div>
+            <div class="carrinho-total">
+                <h3>Total: <span id="total-preco">R$ 0,00</span></h3>
+                <button class="btn-primary" onclick="finalizarCompra()">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
